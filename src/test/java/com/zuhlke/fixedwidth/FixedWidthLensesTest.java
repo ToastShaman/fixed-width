@@ -2,9 +2,9 @@ package com.zuhlke.fixedwidth;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import io.vavr.Function2;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.function.BiFunction;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator.ReplaceUnderscores;
 import org.junit.jupiter.api.Test;
@@ -29,7 +29,7 @@ class FixedWidthLensesTest {
         var lens2 = FixedWidthLenses.dateify(DateTimeFormatter.ofPattern("yyyyMMdd"));
         var ctx = ReadContext.of("     20230101");
 
-        BiFunction<String, LocalDate, String> zipper =
+        Function2<String, LocalDate, String> zipper =
                 (str, date) -> "%s %s".formatted(str == null ? "NULL" : str, date);
 
         var result = FixedWidthLenses.zip(lens1, lens2, zipper).apply(ctx);

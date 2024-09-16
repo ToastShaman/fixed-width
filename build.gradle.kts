@@ -16,6 +16,7 @@ repositories {
 
 dependencies {
     implementation("org.apache.commons:commons-lang3:3.17.0")
+    implementation("io.vavr:vavr:0.10.4")
 
     testImplementation(platform("org.junit:junit-bom:5.11.0"))
     testImplementation("org.junit.jupiter:junit-jupiter")
